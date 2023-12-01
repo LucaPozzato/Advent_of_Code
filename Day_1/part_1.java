@@ -25,10 +25,11 @@ public class part_1 {
                     break;
                 }
             }
-            line = reader.readLine();
             sum_calval += temp_calval;
+            temp_calval = 0;
+            line = reader.readLine();
         }
-        System.err.println(sum_calval);
+        System.out.println(sum_calval);
         reader.close();
     }
 }
