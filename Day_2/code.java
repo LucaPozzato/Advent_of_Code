@@ -13,8 +13,8 @@ public class code {
 }
 
 class part_1 {
-    List<Integer> id_list = new ArrayList<Integer>();
-    Integer sum_id = 0;
+    private List<Integer> id_list = new ArrayList<Integer>();
+    private Integer sum_id = 0;
 
     Integer run () throws Exception {
         get_ok();
@@ -26,7 +26,7 @@ class part_1 {
         return sum_id;
     }
 
-    void get_ok () throws Exception {
+    private void get_ok () throws Exception {
         BufferedReader reader = new BufferedReader(new FileReader("Day_2/input.txt"));
         String line = reader.readLine();
 
@@ -71,8 +71,8 @@ class part_1 {
 }
 
 class part_2 {
-    List<Integer> cube_power = new ArrayList<Integer>();
-    Integer sum_power = 0;
+    private List<Integer> cube_power = new ArrayList<Integer>();
+    private Integer sum_power = 0;
 
     Integer run () throws Exception {
         get_power();
@@ -84,7 +84,7 @@ class part_2 {
         return sum_power;
     }
 
-    void get_power () throws Exception {
+    private void get_power () throws Exception {
         BufferedReader reader = new BufferedReader(new FileReader("Day_2/input.txt"));
         String line = reader.readLine();
 
