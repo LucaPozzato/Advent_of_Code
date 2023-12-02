@@ -5,8 +5,48 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class part_2 {
+public class code {
     public static void main(String[] args) throws Exception{
+        System.out.println(new part_1().run());
+        System.out.println(new part_2().run());
+    }
+}
+
+class part_1 {
+    Integer run () throws Exception {
+        BufferedReader reader;
+        Integer sum_calval = 0;
+        Integer temp_calval = 0;
+
+        reader = new BufferedReader(new FileReader("Day_1/input.txt"));
+        String line = reader.readLine();
+
+        while (line != null) {
+            String[] split = line.split("");
+            for (int i = 0; i < split.length; i++) {
+                if (split[i].matches("[0-9]")) {
+                    temp_calval = Integer.parseInt(split[i]) * 10;
+                    break;
+                }
+            }
+            for (int i = split.length - 1; i >= 0; i--) {
+                if (split[i].matches("[0-9]")) {
+                    temp_calval += Integer.parseInt(split[i]);
+                    break;
+                }
+            }
+            sum_calval += temp_calval;
+            temp_calval = 0;
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return sum_calval;
+    }
+}
+
+class part_2 {
+    Integer run () throws Exception {
         BufferedReader reader;
         Integer sum_calval = 0;
         Integer temp_calval = 0;
@@ -50,7 +90,8 @@ public class part_2 {
             temp_calval = 0;
             line = reader.readLine();
         }
-        System.out.println(sum_calval);
+        
         reader.close();
+        return sum_calval;
     }
 }
