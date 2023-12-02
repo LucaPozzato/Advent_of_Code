@@ -6,8 +6,8 @@ This repository is for my advent of code solutions. This year I decided to parti
 
 Compile the java code:
 
-> `javac FOLDER_OF_DAY/code.java`
+`javac FOLDER_OF_DAY/code.java`
 
 Run the java code:
 
-> `java FOLDER_OF_DAY/code`
+`java FOLDER_OF_DAY/code`
