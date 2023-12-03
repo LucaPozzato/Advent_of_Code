@@ -60,4 +60,4 @@ In this schematic, there are two gears. The first is in the top left; it has par
 
 What is the sum of all of the gear ratios in your engine schematic?
 
-#### Solution ->
+#### Solution -> 69527306

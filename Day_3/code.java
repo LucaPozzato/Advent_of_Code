@@ -6,7 +6,7 @@ import java.util.*;
 public class code {
     public static void main (String[] args) throws Exception {
         System.out.println(new part_1().run());
-        // System.out.println(new part_2().run());
+        System.out.println(new part_2().run());
     }
 }
 
@@ -38,7 +38,6 @@ class part_1 {
         v_num();
         int sum = 0;
         for (int i = 0; i < num.size(); i++) {
-            // System.out.println(num.get(i));
             sum += num.get(i);
         }
         return sum;
@@ -161,13 +160,91 @@ class part_2 {
 
     Integer run () throws Exception {
         matrix = new read().get_input();
+        get_nums();
         int sum = 0;
         for (int i = 0; i < num.size(); i++) {
-            // System.out.println(num.get(i));
             sum += num.get(i);
         }
         return sum;
     }
 
-    
+    private void get_nums () {
+        Integer num_u = 1;
+        Integer num_d = 1;
+        Integer num_r = 1;
+        Integer num_l = 1;
+        Integer found = 0;
+
+        for (int r = 0; r < matrix.size(); r++) {
+            for (int c = 0; c < matrix.get(r).length; c++) {
+                if (matrix.get(r)[c].equals("*")) {
+                    num_u = num_ver(r, c, - 1)[0];
+                    found += num_ver(r, c, - 1)[1];
+                    num_d = num_ver(r, c, + 1)[0];
+                    found += num_ver(r, c, + 1)[1];
+                    if (matrix.get(r)[c + 1].matches("[0-9]")) {
+                        num_r = get_num(r, c + 1);
+                        found++;
+                    }
+                    if (matrix.get(r)[c - 1].matches("[0-9]")) {
+                        num_l = get_num(r, c - 1);
+                        found++;
+                    }
+                    if (found == 2) {
+                        num.add(num_u * num_d * num_l * num_r);
+                    }
+                    found = 0;
+                    num_r = 1;
+                    num_l = 1;
+                }
+            }
+        }
+    }
+
+    private Integer[] num_ver (Integer r, Integer c, Integer dir) {
+        Integer temp_num = 0;
+        Integer product = 1;
+        Integer[] res = new Integer[2];
+
+        if (matrix.get(r + dir)[c - 1].matches("[0-9]")) {
+            temp_num = get_num(r + dir, c - 1);
+            if (matrix.get(r + dir)[c].equals(".") && matrix.get(r + dir)[c + 1].matches("[0-9]")) {
+                product *= temp_num;
+                temp_num = get_num(r + dir, c + 1);
+                temp_num *= product;
+                res[0] = temp_num;
+                res [1] = 2;
+                return res;
+            }
+        }
+        else if (matrix.get(r + dir)[c].matches("[0-9]")) {
+            temp_num = get_num(r + dir, c);
+        }
+        else if (matrix.get(r + dir)[c + 1].matches("[0-9]")) {
+            temp_num = get_num(r + dir, c + 1);
+        }
+        else {
+            res[0] = 1;
+            res[1] = 0;
+            return res;
+        }
+        res[0] = temp_num;
+        res[1] = 1;
+        return res;
+    }
+
+    private Integer get_num (Integer r, Integer c) {
+        Integer temp_num = 0;
+
+        while (c > -1 && matrix.get(r)[c].matches("[0-9]")) {
+            c--;
+        }
+        c++;
+        while (c < matrix.get(r).length && matrix.get(r)[c].matches("[0-9]")) {
+            temp_num *= 10;
+            temp_num += Integer.parseInt(matrix.get(r)[c]);
+            c++;
+        }
+        return temp_num;
+    }
 }
