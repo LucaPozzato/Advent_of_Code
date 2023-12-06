@@ -27,7 +27,7 @@ class part_1 {
     }
 
     private void get_ok () throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("Day_2/input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(System.getenv("INPUT_FILE")));
         String line = reader.readLine();
 
         while (line != null) {
@@ -85,7 +85,7 @@ class part_2 {
     }
 
     private void get_power () throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("Day_2/input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(System.getenv("INPUT_FILE")));
         String line = reader.readLine();
 
         while (line != null) {

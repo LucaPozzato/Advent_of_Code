@@ -18,7 +18,7 @@ class part_1 {
         Integer sum_calval = 0;
         Integer temp_calval = 0;
 
-        reader = new BufferedReader(new FileReader("Day_1/input.txt"));
+        reader = new BufferedReader(new FileReader(System.getenv("INPUT_FILE")));
         String line = reader.readLine();
 
         while (line != null) {
@@ -61,7 +61,7 @@ class part_2 {
             dict.put(numbers[i], i + 1);
         }
 
-        reader = new BufferedReader(new FileReader("Day_1/input.txt"));
+        reader = new BufferedReader(new FileReader(System.getenv("INPUT_FILE")));
         String line = reader.readLine();
 
         Matcher m_first;

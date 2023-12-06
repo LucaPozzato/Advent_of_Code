@@ -15,7 +15,7 @@ class read {
     private String[] s_line;
 
     List<String[]> get_input () throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("Day_3/input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(System.getenv("INPUT_FILE")));
         String line = reader.readLine();
 
         while (line != null) {

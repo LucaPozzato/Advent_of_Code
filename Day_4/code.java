@@ -13,14 +13,14 @@ public class code {
 
 class part_1 {
     Integer run () throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("Day_4/input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(System.getenv("INPUT_FILE")));
 
         Matcher num_m;
         Integer sum = 0;
         String line;
         Integer card_value = 0;
         int i = 0;
-        String regex = "(?<= )(\\d+)(?= ).*\\|.*(?<= )\\1(?=( |\\n))";
+        String regex = "(?<= )(\\d+)(?= .*\\|.*(?<= )\\1(?=( |\\n)))";
 
         line = reader.readLine() + "\n";
 
@@ -28,8 +28,6 @@ class part_1 {
             num_m = Pattern.compile(regex).matcher(line);
             while (num_m.find()) {
                 card_value = (int) (Math.pow(2, i));
-                line = line.replace(" " + num_m.group(1) + " ", " ");
-                num_m = Pattern.compile(regex).matcher(line);
                 i++;
             }
             sum += card_value;
@@ -55,7 +53,7 @@ class part_2 {
     }
 
     private void read_input () throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("Day_4/input.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(System.getenv("INPUT_FILE")));
         String line;
 
         line = reader.readLine();
@@ -70,7 +68,7 @@ class part_2 {
 
     private void tot_card (int index_i, int index_f) {
         Matcher num_m;
-        String regex = "(?<= )(\\d+)(?= ).*\\|.*(?<= )\\1(?=( |\\n))";
+        String regex = "(?<= )(\\\\d+)(?= .*\\\\|.*(?<= )\\\\1(?=( |\\\\n)))";
         int wins = 0;
 
         for (int i = index_i; i <= index_f; i++) {
@@ -79,11 +77,9 @@ class part_2 {
 
             num_m = Pattern.compile(regex).matcher(line);
             while (num_m.find()) {
-                line = line.replace(" " + num_m.group(1) + " ", " ");
-                num_m = Pattern.compile(regex).matcher(line);
                 wins++;
             }
-            
+
             if (wins != 0 && i + wins < matrix.size()) {
                 total += wins;
                 tot_card(i + 1, i + wins);
