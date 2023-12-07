@@ -18,4 +18,4 @@ else
 fi
 
 javac Day_${DAY}/code.java
-java Day_${DAY}/code
+java -Xmx12g Day_${DAY}/code

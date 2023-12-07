@@ -68,7 +68,7 @@ class part_2 {
 
     private void tot_card (int index_i, int index_f) {
         Matcher num_m;
-        String regex = "(?<= )(\\\\d+)(?= .*\\\\|.*(?<= )\\\\1(?=( |\\\\n)))";
+        String regex = "(?<= )(\\d+)(?= .*\\|.*(?<= )\\1(?=( |\\n)))";
         int wins = 0;
 
         for (int i = index_i; i <= index_f; i++) {
